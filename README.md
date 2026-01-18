@@ -2,6 +2,8 @@
 
 A simple SMTP email sending service built with Rust and Actix-web.
 
+> **Warning:** This service is not intended to be publicly exposed on the internet. The API routes do not currently support an authentication layer, so it should only be used in trusted/internal network environments.
+
 ## Configuration
 
 The application is configured using environment variables:
