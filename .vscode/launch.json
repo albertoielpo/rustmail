@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Rust Mail (CodeLLDB)",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rustmail",
+                    "--package=rustmail"
+                ],
+                "filter": {
+                    "name": "rustmail",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "RUST_LOG": "debug",
+                "BIND_ADDR": "0.0.0.0",
+                "BIND_PORT": "3333"
+            }
+        },
+    ]
+}

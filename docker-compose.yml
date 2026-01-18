@@ -1,0 +1,25 @@
+networks:
+  micro-net:
+    driver: "bridge"
+
+services:
+  rustmail:
+    build:
+      context: .
+    ports:
+      - "3333:3333"
+    environment:
+      # Logging
+      - RUST_LOG=info,actix_web::middleware::logger=warn
+      # Server configuration
+      - BIND_ADDR=0.0.0.0
+      - BIND_PORT=3333
+      - BIND_WORKERS=1
+      # SMTP configuration
+      - SMTP_HOST=localhost
+      - SMTP_PORT=25
+      - SMTP_USE_TLS=false
+      # - SMTP_USERNAME=user
+      # - SMTP_PASSWORD=pass
+    networks:
+      - micro-net

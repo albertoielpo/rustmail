@@ -1,0 +1,45 @@
+# Clippy configuration for webrust
+# See: https://doc.rust-lang.org/clippy/configuration.html
+
+# Cognitive complexity threshold - warns if functions are too complex
+cognitive-complexity-threshold = 30
+
+# Maximum number of single char bindings allowed in a scope
+single-char-binding-names-threshold = 4
+
+# Maximum allowed size for arrays without triggering large_stack_arrays
+array-size-threshold = 512000
+
+# Maximum allowed size for types without triggering large_types_passed_by_value
+type-complexity-threshold = 250
+
+# Minimum number of enum variants for triggering large_enum_variant
+enum-variant-size-threshold = 200
+
+# Maximum lines for a function before triggering too_many_lines
+too-many-lines-threshold = 100
+
+# Maximum number of arguments for a function
+too-many-arguments-threshold = 7
+
+# Avoid false positives for common web framework patterns
+avoid-breaking-exported-api = true
+
+# Allow expect() and unwrap() in certain contexts (can be adjusted)
+# This is useful for web applications where panicking might be acceptable in some cases
+allow-expect-in-tests = true
+allow-unwrap-in-tests = true
+
+# Documentation style
+doc-valid-idents = ["MongoDB", "Redis", "API", "JSON", "HTML", "CSS", "HTTP", "HTTPS", "URL", "URI", "UUID", "ID"]
+
+# Disallowed methods (methods you want to ban from usage)
+# Uncomment and customize as needed:
+# disallowed-methods = [
+#     { path = "std::env::set_var", reason = "use a configuration struct instead" },
+# ]
+
+# Disallowed types (types you want to ban from usage)
+# disallowed-types = [
+#     { path = "std::collections::HashMap", reason = "use FxHashMap for better performance" },
+# ]

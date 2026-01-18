@@ -1,0 +1,43 @@
+@baseurl = http://localhost:3333
+###
+# Health check
+GET {{baseurl}}/
+Accept: application/json
+
+###
+# Head health check
+HEAD {{baseurl}}
+Accept: *
+
+###
+# Send an email base64 encoded
+POST {{baseurl}}/send
+Accept: application/json
+Content-Type: application/json
+
+{ 
+    "mail" : {
+        "from": "sender@example.com",
+        "to": ["receiver@example.com"],
+        "subject":  "base64 mail",
+        "text":  "RmlsZXN5c3RlbSBTaXplIFVzZWQgQXZhaWwgVXNlJSBNb3VudGVkIG9uIG5vbmUgNy43RyAwIDcuN0cgMCUgL3Vzci9saWIvbW9kdWxlcy82LjYuODcuMi1taWNyb3NvZnQtc3RhbmRhcmQtV1NMMiBub25lIDcuN0cgNC4wSyA3LjdHIDElIC9tbnQvd3NsIGRyaXZlcnMgOTUyRyAyMDVHIDc0OEcgMjIlIC91c3IvbGliL3dzbC9kcml2ZXJzIC9kZXYvc2RkIDEwMDdHIDQuOEcgOTUxRyAxJSAvIG5vbmUgNy43RyA3NksgNy43RyAxJSAvbW50L3dzbGcgbm9uZSA3LjdHIDAgNy43RyAwJSAvdXNyL2xpYi93c2wvbGliIHJvb3RmcyA3LjdHIDIuN00gNy43RyAxJSAvaW5pdCBub25lIDcuN0cgNjI0SyA3LjdHIDElIC9ydW4gbm9uZSA3LjdHIDAgNy43RyAwJSAvcnVuL2xvY2sgbm9uZSA3LjdHIDAgNy43RyAwJSAvcnVuL3NobSBub25lIDcuN0cgNzZLIDcuN0cgMSUgL21udC93c2xnL3ZlcnNpb25zLnR4dCBub25lIDcuN0cgNzZLIDcuN0cgMSUgL21udC93c2xnL2RvYyBDOlwgOTUyRyAyMDVHIDc0OEcgMjIlIC9tbnQvYyB0bXBmcyAxLjZHIDIwSyAxLjZHIDElIC9ydW4vdXNlci8xMDAxIHRvdGFsIHVzZWQgZnJlZSBzaGFyZWQgYnVmZi9jYWNoZSBhdmFpbGFibGUgTWVtOiAxNTY0NiA3OTkgMTQ4NzYgMyAxNjYgMTQ4NDYgU3dhcDogNDA5NiAwIDQwOTYK",
+        "encoding": "base64"
+    }
+}
+
+
+###
+# Send an email
+POST {{baseurl}}/send
+Accept: application/json
+Content-Type: application/json
+
+{ 
+    "mail" : {
+        "from": "sender@example.com",
+        "to": ["receiver@example.com"],
+        "subject":  "ciao come va?",
+        "text":  "Tutto bene dai",
+        "encoding": "plain"
+    }
+}

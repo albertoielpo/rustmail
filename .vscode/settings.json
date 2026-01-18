@@ -1,0 +1,17 @@
+{
+    "[rust]": {
+        "editor.formatOnSave": true
+    },
+    // Rust-analyzer settings for Clippy integration
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.check.allTargets": true,
+    // Show Clippy warnings inline as you type
+    "rust-analyzer.diagnostics.enable": true,
+    "rust-analyzer.diagnostics.experimental.enable": true,
+    // Clippy lints configuration
+    "rust-analyzer.cargo.features": "all",
+    // Optional: Auto-fix on save (uncomment if desired)
+    // "editor.codeActionsOnSave": {
+    //     "source.fixAll": true
+    // }
+}
