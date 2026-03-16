@@ -1,5 +1,9 @@
 use serde::Deserialize;
 
+fn default_content_type() -> String {
+    "plain".to_owned()
+}
+
 /// Email payload structure containing all email details
 ///
 /// This structure represents the actual email content and metadata
@@ -20,6 +24,10 @@ pub struct SendMailPayload {
 
     /// Encoding type for the text field (e.g., "plain" or "base64")
     pub encoding: String,
+
+    /// Content type of the email body (e.g., "plain" or "html"). Defaults to "plain".
+    #[serde(default = "default_content_type")]
+    pub content_type: String,
 }
 
 /// Request wrapper for sending an email

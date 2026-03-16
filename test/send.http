@@ -32,12 +32,46 @@ POST {{baseurl}}/send
 Accept: application/json
 Content-Type: application/json
 
-{ 
+{
     "mail" : {
         "from": "sender@example.com",
         "to": ["receiver@example.com"],
         "subject":  "ciao come va?",
         "text":  "Tutto bene dai",
         "encoding": "plain"
+    }
+}
+
+###
+# Send an HTML email (base64 encoded)
+POST {{baseurl}}/send
+Accept: application/json
+Content-Type: application/json
+
+{
+    "mail" : {
+        "from": "sender@example.com",
+        "to": ["receiver@example.com"],
+        "subject":  "ciao come va?",
+        "text":  "PGgxPkNpYW9cITwvaDE+PHA+VHV0dG8gPHN0cm9uZz5iZW5lPC9zdHJvbmc+IGRhaS48L3A+",
+        "encoding": "base64",
+        "content_type": "html"
+    }
+}
+
+###
+# Send an HTML email
+POST {{baseurl}}/send
+Accept: application/json
+Content-Type: application/json
+
+{
+    "mail" : {
+        "from": "sender@example.com",
+        "to": ["receiver@example.com"],
+        "subject":  "ciao come va?",
+        "text":  "<h1>Ciao!</h1><p>Tutto <strong>bene</strong> dai.</p>",
+        "encoding": "plain",
+        "content_type": "html"
     }
 }

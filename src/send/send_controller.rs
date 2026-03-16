@@ -7,6 +7,7 @@ use crate::settings::{RustMailRes, SmtpConfig, Status, json_error};
 use actix_web::{HttpRequest, HttpResponse, Result, get, head, post, web};
 use base64::{Engine, prelude::BASE64_STANDARD};
 use lettre::transport::smtp::authentication::Credentials;
+use lettre::message::SinglePart;
 use lettre::{Message, SmtpTransport, Transport};
 use log::{debug, info};
 
@@ -100,7 +101,11 @@ async fn send(
         email_builder = email_builder.to(recipient);
     }
 
-    let email = email_builder.body(text).map_err(json_error)?;
+    let email = if payload.mail.content_type.eq("html") {
+        email_builder.singlepart(SinglePart::html(text)).map_err(json_error)?
+    } else {
+        email_builder.body(text).map_err(json_error)?
+    };
 
     // Build SMTP transport with configuration
     let mailer = if smtp_config.use_tls {
